@@ -1,17 +1,32 @@
 import turtle
 
-# Create our turtle
+screen = turtle.Screen()
+screen.bgcolor("lightblue") 
+
 t = turtle.Turtle()
 t.speed(3)
 
-# 1. Draw the tree trunk (Brown rectangle)
+t.penup()
+t.goto(-400, -150)
+t.pendown()
+t.color("lightgreen")
+t.begin_fill()
+
+
+for i in range(2):
+  t.forward(800)
+  t.right(90)
+  t.forward(250)
+  t.right(90)
+
+t.end_fill()
+
+#trunk
 t.penup()
 t.goto(-15, -150)
 t.pendown()
 t.color("saddlebrown")
 t.begin_fill()
-
-# Simple loop to draw a rectangle
 for i in range(2):
   t.forward(30)
   t.left(90)
@@ -20,10 +35,8 @@ for i in range(2):
 
 t.end_fill()
 
-
-# 2. Draw the tree leaves (Green triangles stacked on top of each other)
+#tree leaves
 t.color("forestgreen")
-
 t.penup()
 t.goto(-110, -90)
 t.pendown()
@@ -32,7 +45,6 @@ t.goto(110, -90)
 t.goto(0, -10)
 t.goto(-110, -90)
 t.end_fill()
-
 t.penup()
 t.goto(-80, -20)
 t.pendown()
@@ -41,7 +53,6 @@ t.goto(80, -20)
 t.goto(0, 50)
 t.goto(-80, -20)
 t.end_fill()
-
 t.penup()
 t.goto(-50, 40)
 t.pendown()
@@ -51,26 +62,87 @@ t.goto(0, 110)
 t.goto(-50, 40)
 t.end_fill()
 
+
+#gift
 def draw_gift(x, y):
   t.penup()
   t.goto(x, y)
   t.pendown()
   t.color("crimson")
   t.begin_fill()
-
   for i in range(2):
     t.forward(40)
     t.left(90)
     t.forward(40)
     t.left(90)
-
   t.end_fill()
 
+  #ribbon
+  t.color("gold")
+  t.pensize(3)
+  t.penup()
+  t.goto(x + 20, y)
+  t.setheading(90)
+  t.pendown()
+  t.forward(40)
+  t.penup()
+  t.goto(x, y + 20)
+  t.setheading(0)
+  t.pendown()
+  t.forward(40)
+  t.pensize(1)
 
-gift_positions = [-70, 30]
 
-for x_pos in gift_positions:
-  draw_gift(x_pos, -150)
+for gift_x in [-70, 30]:
+  draw_gift(gift_x, -150)
 
+#stickmen
+t.color("black")
+t.pensize(3)
+
+# Head
+t.penup()
+t.goto(155, -35)
+t.setheading(0)
+t.pendown()
+for i in range(4):
+  t.forward(50)
+  t.left(90)
+
+# Body
+t.penup()
+t.goto(180, -35)
+t.pendown()
+t.goto(180, -90)
+
+# Arms 
+for arm_x in [145, 215]:
+  t.penup()
+  t.goto(180, -45)
+  t.pendown()
+  t.goto(arm_x, -75)
+
+# Legs 
+for leg_x in [155, 205]:
+  t.penup()
+  t.goto(180, -90)
+  t.pendown()
+  t.goto(leg_x, -135)
+
+# Brown boots 
+t.color("saddlebrown")
+for boot_x in [148, 198]:
+  t.penup()
+  t.goto(boot_x, -150)
+  t.pendown()
+  t.begin_fill()
+  for i in range(2):
+    t.forward(16)
+    t.left(90)
+    t.forward(15)
+    t.left(90)
+  t.end_fill()
+
+t.pensize(1)
 t.hideturtle()
 turtle.done()
