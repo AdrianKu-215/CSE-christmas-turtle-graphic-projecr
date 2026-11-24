@@ -1,11 +1,13 @@
 import turtle
 
 screen = turtle.Screen()
-screen.bgcolor("lightblue") 
+screen.bgcolor("lightblue")
+screen.tracer(0)
 
 t = turtle.Turtle()
-t.speed(3)
+t.speed(0)
 
+#drawground
 t.penup()
 t.goto(-400, -150)
 t.pendown()
@@ -145,4 +147,5 @@ for boot_x in [148, 198]:
 
 t.pensize(1)
 t.hideturtle()
+screen.update()
 turtle.done()
