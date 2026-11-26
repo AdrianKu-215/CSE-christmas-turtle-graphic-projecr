@@ -1,7 +1,7 @@
 import turtle
 
 screen = turtle.Screen()
-screen.bgcolor("lightblue")
+screen.bgcolor("darkblue")
 screen.tracer(0)
 
 t = turtle.Turtle()
@@ -145,7 +145,35 @@ for boot_x in [148, 198]:
     t.left(90)
   t.end_fill()
 
+  t.color("white")
+t.pensize(2)
+for sx, sy in [(-220, 120), (-120, 160), (90, 140), (230, 110)]:
+  t.penup()
+  t.goto(sx, sy)
+  t.pendown()
+  for _ in range(4):
+    t.forward(8)
+    t.backward(16)
+    t.forward(8)
+    t.right(45)
+
+def draw_snowflake(x, y):
+  t.color("white")
+  t.pensize(2)
+  t.penup()
+  t.goto(x, y)
+  t.setheading(0)
+  t.pendown()
+  for i in range(4):
+    t.forward(8)
+    t.backward(16)
+    t.forward(8)
+    t.right(45)
+  t.pensize(1)
+screen.onclick(draw_snowflake)
+
 t.pensize(1)
 t.hideturtle()
 screen.update()
 turtle.done()
+
